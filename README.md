@@ -1,3 +1,3 @@
 # music-fader
 
-TO-DO
+TO-DO: edit this readme
