@@ -50,7 +50,7 @@ public class Player {
 			        
 			        fadeIn();
 			        
-			        clip.loop(clip.LOOP_CONTINUOUSLY);
+			        clip.loop(Clip.LOOP_CONTINUOUSLY);
 				} catch(Exception e) {
 					e.printStackTrace();
 				}

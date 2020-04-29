@@ -2,7 +2,6 @@ package de.mitja.musicfader.ini;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.prefs.Preferences;
 
 import org.ini4j.Ini;
@@ -16,23 +15,6 @@ public class IniFiles {
 	public IniFiles() throws InvalidFileFormatException, IOException {
 		File iniFolder = new File("inis");
 		if(!iniFolder.exists()) iniFolder.mkdir();
-		
-		
-		File Default = new File("inis/carelesswhisper.ini");
-		
-		if(!Default.exists()) {
-			Default.createNewFile();
-			
-			PrintWriter writer = new PrintWriter("inis/carelesswhisper.ini", "UTF-8");
-			writer.println("[music-file]");
-			writer.println("wav=carelesswhisperloop.wav");
-			writer.println();
-			writer.println("[fading]");
-			writer.println("fadeInTime=1.5");
-			writer.println("fadeOutTime=1.5");
-			writer.close();
-		}
-		
 		iniFiles = getAllIniFiles();
 	}
 	
@@ -52,8 +34,25 @@ public class IniFiles {
 	private File[] getAllIniFiles() {
 		File folder = new File("inis");
 		File[] listOfFiles = folder.listFiles();
+		File[] onlyInis;
 		
-		return listOfFiles;
+		int counter = 0;
+		for(int i = 0; i < listOfFiles.length; i++) {
+			if(listOfFiles[i].getName().endsWith(".ini")) {
+				counter++;
+			}
+		}
+		
+		int oiCount = 0;
+		onlyInis = new File[counter];
+		for(int i = 0; i < listOfFiles.length; i++) {
+			if(listOfFiles[i].getName().endsWith(".ini")) {
+				onlyInis[oiCount] = listOfFiles[i];
+				oiCount++;
+			}
+		}
+		
+		return onlyInis;
 	}
 
 }

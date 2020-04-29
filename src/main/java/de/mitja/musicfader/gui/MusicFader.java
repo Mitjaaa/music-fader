@@ -6,9 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MusicFaderGUI extends Application {
-
-	private GUIController controller = new GUIController();
+public class MusicFader extends Application {
 	
 	@Override
 	public void stop() {
